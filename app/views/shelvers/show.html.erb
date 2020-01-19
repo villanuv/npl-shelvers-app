@@ -1,0 +1,34 @@
+<%= render 'menu' %>
+
+<h2><%= @shelver.first_name %> <%= @shelver.last_name %></h2>
+
+<p>Schedule This Week:</p>
+<% sched = @shelver.schedules.last %>
+<table border="1">
+	<tr>
+		<th>Sun</th>
+		<th>Mon</th>
+		<th>Tue</th>
+		<th>Wed</th>
+		<th>Thu</th>
+		<th>Fri</th>
+		<th>Sat</th>
+	</tr>
+	<tr>
+		<td><%= sched.sun if sched.sun != nil %></td>
+		<td><%= sched.mon if sched.mon != nil %></td>
+		<td><%= sched.tue if sched.tue != nil %></td>
+		<td><%= sched.wed if sched.wed != nil %></td>
+		<td><%= sched.thu if sched.thu != nil %></td>
+		<td><%= sched.fri if sched.fri != nil %></td>
+		<td><%= sched.sat if sched.sat != nil %></td>
+	</tr>			
+</table>
+
+<p><hr /></p>
+
+<p>Last Reading (Static Table)</p>
+<table border="1">
+	<tr><th>January 2020 Assignment</th><th>Last Read</th></tr>
+	<tr><td>Board Books, Picture Books A-L</td><td>Agee - Lichtenstein</td></tr>
+</table>

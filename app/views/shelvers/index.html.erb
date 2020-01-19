@@ -1,0 +1,212 @@
+<%= render 'menu' %>
+
+<h1>All Shelvers: Week #<%= @week %></h1>
+
+<p><a href="">Enter Shelver's Weekly Schedule</a> | <%= link_to '+New Shelver', new_shelver_path %></p>
+
+<!-- <h3>Dynamic Table</h3> -->
+
+<table border="1">
+	<tr>
+		<th rowspan="2">Name</th>
+		<th colspan="7">Schedule: <%= @start_of_week %>-<%= @end_of_week %></th>
+		<th rowspan="2" colspan="2">Total Hours</th>
+	</tr>
+	<tr>
+		<td>Sun</td>
+		<td>Mon</td>
+		<td>Tue</td>
+		<td>Wed</td>
+		<td>Thu</td>
+		<td>Fri</td>
+		<td>Sat</td>
+	</tr>
+	<% @shelvers.each do |shelver| %>
+		<% current_schedule = shelver.schedules.last %>
+	<tr>
+		<td><%= link_to "#{shelver.last_name}, #{shelver.first_name}", shelver %></td>
+		<td><%= current_schedule.sun if current_schedule != nil %></td>
+		<td><%= current_schedule.mon if current_schedule != nil %></td>
+		<td><%= current_schedule.tue if current_schedule != nil %></td>
+		<td><%= current_schedule.wed if current_schedule != nil %></td>
+		<td><%= current_schedule.thu if current_schedule != nil %></td>
+		<td><%= current_schedule.fri if current_schedule != nil %></td>
+		<td><%= current_schedule.sat if current_schedule != nil %></td>
+		<td><%= current_schedule.total_hours %></td>
+		<td><%= link_to '<i class="fas fa-edit"></i>'.html_safe, shelver %></td>
+	</tr>
+	<% end %>
+	<tr><td colspan="10" bgcolor="#e0e0e0" style="font-weight: bold;">Archived Shelvers</td></tr>
+	<% @past_shelvers.each do |shelver| %>
+		<tr>
+			<td><%= link_to "#{shelver.last_name}, #{shelver.first_name}", shelver %></td>
+			<td colspan="8"></td>
+			<td><%= link_to '<i class="fas fa-edit"></i>'.html_safe, shelver %></td>
+		</tr>
+	<% end %>
+</table>
+
+<p><hr /></p>
+
+<p><%= image_tag("/images/shelf_reading.jpg", class: "fpo") %></p>
+
+<p><hr /></p>
+
+<!-- <h3>Static Table</h3>
+
+<table border="1">
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th colspan="7">Schedule This Week</th>
+		<th>Total Hours</th>
+		<th></th>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>Inna Malamud</td>
+		<td>12-4</td>
+		<td>8-1</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>8-1</td>
+		<td>{{ calculated }}</td>
+		<td><a href=""><i class="fas fa-edit"></i></a></td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>Jane Voronova</td>
+		<td>12-5</td>
+		<td>8-12</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>8-12</td>
+		<td>8-1</td>
+		<td>{{ calculated }}</td>
+		<td><a href=""><i class="fas fa-edit"></i></a></td>
+	</tr>
+	<tr>
+		<td>3</td>
+		<td>Stephanie Mayer</td>
+		<td></td>
+		<td></td>
+		<td>1130-430</td>
+		<td>1130-530</td>
+		<td>1130-530</td>
+		<td>1130-530</td>
+		<td>1130-430</td>
+		<td>{{ calculated }}</td>
+		<td><a href=""><i class="fas fa-edit"></i></a></td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>Paul McDonald</td>
+		<td></td>
+		<td>3-9</td>
+		<td>3-9</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>{{ calculated }}</td>
+		<td><a href=""><i class="fas fa-edit"></i></a></td>
+	</tr>
+	<tr>
+		<td>5</td>
+		<td>Matt McGill</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>1-5</td>
+		<td>1-5</td>
+		<td>1-5</td>
+		<td>11-5</td>
+		<td>{{ calculated }}</td>		
+		<td><a href=""><i class="fas fa-edit"></i></a></td>
+	</tr>
+	<tr>
+		<td>6</td>
+		<td>Arman Talaefard</td>
+		<td>12-4</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>8-4</td>
+		<td>8-4</td>
+		<td>{{ calculated }}</td>
+		<td><a href=""><i class="fas fa-edit"></i></a></td>
+	</tr>
+	<tr>
+		<td>7</td>
+		<td>Patrick Villanueva</td>
+		<td>12-5</td>
+		<td></td>
+		<td>1245-545</td>
+		<td></td>
+		<td>830-530</td>
+		<td></td>
+		<td></td>
+		<td>{{ calculated }}</td>
+		<td><a href=""><a href=""><i class="fas fa-edit"></i></a></a></td>
+	</tr>
+	<tr>
+		<td>8</td>
+		<td>Beth Grossman</td>
+		<td></td>
+		<td>1-6</td>
+		<td>1-6</td>
+		<td></td>
+		<td></td>
+		<td>1-5</td>
+		<td>1-5</td>
+		<td>{{ calculated }}</td>
+		<td><a href=""><i class="fas fa-edit"></i></a></td>
+	</tr>	
+
+	<tr>
+		<td>9</td>
+		<td>Maria Petrova</td>
+		<td></td>
+		<td>4-8</td>
+		<td></td>
+		<td></td>
+		<td>4-8</td>
+		<td></td>
+		<td>11-3</td>
+		<td>{{ calculated }}</td>
+		<td><a href=""><i class="fas fa-edit"></i></a></td>
+	</tr>
+	<tr>
+		<td>10</td>
+		<td>Sunkyung Lee</td>
+		<td>12-4</td>
+		<td>8-1</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>8-1</td>
+		<td>{{ calculated }}</td>
+		<td><a href=""><i class="fas fa-edit"></i></a></td>
+	</tr>
+	<tr>
+		<td>11</td>
+		<td>Paul Kim</td>
+		<td>1-5</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>8-12</td>
+		<td>{{ calculated }}</td>		
+		<td><a href=""><i class="fas fa-edit"></i></a></td>
+	</tr>
+	<tr>
+		<td></td><td colspan="10"><a href="">+New Shelver</a></td>
+	</tr>
+</table> -->
