@@ -1,0 +1,29 @@
+<%= render 'menu' %>
+
+<h1>Library Hours</h1>
+
+<table border="1">
+	<tr>
+		<th colspan="7">Schedule: <%= @start_of_week %>-<%= @end_of_week %></th>
+	</tr>
+	<tr>
+		<td>Sun</td>
+		<td>Mon</td>
+		<td>Tue</td>
+		<td>Wed</td>
+		<td>Thu</td>
+		<td>Fri</td>
+		<td>Sat</td>
+	</tr>
+	<tr>
+	</tr>
+	<tr>
+		<td><%= @hours.sun %></td>
+		<td><%= @hours.mon %></td>
+		<td><%= @hours.tue %></td>
+		<td><%= @hours.wed %></td>
+		<td><%= @hours.thu %></td>
+		<td><%= @hours.fri %></td>
+		<td><%= @hours.sat %></td>
+	</tr>
+</table>

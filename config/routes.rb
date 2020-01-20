@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get '/:year/week/:week_number/day/:day_number' => 'week#show'
 
+  get '/library-hours' => 'library_hours#index'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

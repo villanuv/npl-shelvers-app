@@ -24,49 +24,24 @@
 <h4>Punchlist</h4>
 
 <ol>
-	<li class="crossout">Create Shelver Objects</li>
-	<li class="crossout">Create Schedule Objects</li>
-	<li class="crossout">Create DailyLog Objects</li>
 	<li>Completed Carts vs. Partial Carts</li>
-	<li>Redo Models
-		<ul>
-			<li class="crossout">Shelver > Employee</li>
-			<li class="crossout">Clerk > Employee</li>
-			<li class="crossout">Schedule (references: employee)</li>
-		</ul>
-	</li>
-	<li>add new columns
-		<ul>
-			<li class="crossout">employee: avatar, birthday, last_day</li>
-		</ul>
-	</li>
-	<li>add Model
-		<ul>
-			<li class="crossout">Clerk (same as Employee)</li>
-			<li class="crossout">LibraryHour</li>
-		</ul>
-	</li>
-	<li class="crossout">inheritance for EmployeeSchedule and LibraryHours</li>
 </ol>
 
 <h4>Completed Cart Punchlist</h4>
 
-<ul>
+<ol>
 	<li>Implement QR Code for each</li>
 	<li>Same Day</li>
-	<li>Partial
+	<li>Partial (See Diane's notes)
 		<ul>
 			<li>Factor in when shift ends (default)</li>
-			<li>Factor in </li>
-			<li>string to object => x.to_sym</li>
 		</ul>
 	</li>
-</ul>
+</ol>
 
 <h4>Shelvers Punchlist</h4>
 
 <ul>
-	<li class="crossout">Create New Shelver</li>
 	<li>Show Shelver
 		<ul>
 			<li>this week's schedule</li>
@@ -129,6 +104,7 @@
 <p>Select Shelvers for the day => Shelver.all.select{|x| x if x.schedules[0].mon != nil}.map{|y| y.first_name}</p>
 <p>string to method => .send(string)</p>
 <p>Date.commercial(2020, 1, 1) => Mon, 30 Dec 2019</p>
+<p>string to object => x.to_sym</p>
 
 <hr>
 
