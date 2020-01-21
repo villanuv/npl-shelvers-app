@@ -1,5 +1,7 @@
 <%= render 'menu' %>
 
+<div class="container">
+	<div class="row">
 <h2><%= @todays_date %> 
 	<a href="/<%= @previous_year %>/week/<%= @previous_week %>/day/<%= @previous_day %>"><i class="fas fa-arrow-alt-circle-left"></i></a> 
 	<a href="/<%= @next_year %>/week/<%= @next_week %>/day/<%= @next_day %>"><i class="fas fa-arrow-alt-circle-right"></i></a>
@@ -15,7 +17,8 @@
 <p>
 	Week Number: <%= @week %>, Day Number: <%= @day %>
 </p>
-
+	</div>
+	<div class="row">
 <table border="1">
 	<tr>
 		<th>Shelver</th>
@@ -59,9 +62,14 @@
 	</tr>
 <% end %>
 </table>
+</div>
 
 <% end %>
 
+<div class="row">
 <p>
 	<%= render 'notes' %>
 </p>
+</div>
+
+</div>

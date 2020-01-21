@@ -22,6 +22,10 @@
   text-decoration: line-through;
 }
 
+table.notes td {
+  vertical-align: top;
+}
+
 ul.nav {
   list-style-type: none;
   margin: 0;

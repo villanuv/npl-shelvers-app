@@ -1,129 +1,150 @@
 <!-- <p>day test symbol: <%= @test %></p> -->
-
-<h4>Feature Punchlist</h4>
-
-<ol>
-	<li>README</li>
-	<li>Implement QR Code for cart</li>
-	<li>Completed Carts vs. Partial Carts</li>
-</ol>
-
-<ul>
-	<li>Bunch of stats here, graphs, etc.
-		<ul>
-			<li>stat: filled carts today</li>
-			<li>stat: sorted carts today</li>
-			<li>stat: finished carts today</li>	
-		</ul>
-	</li>
-	<li>Each shelver should have a stat page
-		<ul>
-			<li>stat: department count</li>
-			<li>stat: daily tasks list count</li>
-			<li>stat: cleanup count</li>
-			<li>stat: cleanup early</li>
-			<li>stat: percentage of email</li>
-			<li>stat: percentage of shelf reading</li>
-		</ul>
-	</li>
-	<li>Implement Wizard</li>
-</ul>
-
-<h4>Completed Cart Punchlist</h4>
-
-<ol>
-	<li>Same Day</li>
-	<li>Partial (See Diane's notes)
-		<ul>
-			<li>Factor in when shift ends (default)</li>
-		</ul>
-	</li>
-</ol>
-
-<h4>Shelvers Punchlist</h4>
-
-<ul>
-	<li>Show Shelver
-		<ul>
-			<li>this week's schedule</li>
-			<li>finished carts</li>
-			<li>current carts</li>
-			<li>history/trends
-				<ul>
-					<li>show assigned department count</li>
-					<li>show cleanup count by department</li>
-					<li>show assigned daily tasks count</li>
-					<li>show finished carts count</li>
-					<li>show sorted carts count</li>
-				</ul>
-			</li>
-			<li>calculate speed: carts/hour</li>
-		</ul>
-	</li>
-	<li>Edit Shelver</li>
-	<li>Delete/Deactivate Shelver</li>
-	<li>Add Active attribute</li>
-</ul>
-
-<h4>Bugs</h4>
-
-<ul>
-	<li>Beginning of year, week 1/day 1 (2020)</li>
-	<li>End of year, week 53 (2020)</li>
-</ul>
-
-<p><%= image_tag("/images/shelvers_schedule.jpg", class: "fpo") %></p>
-
 <hr>
 
-<h4>Notes</h4>
+<table class="notes">
+	<tr>
+		<td>
+			<h4>Feature Punchlist</h4>
 
-<ol>
-	<li>Add to Daily Tasks
-		<ul>
-		<li>Unpack RAILS bins</li>
-		<li>ILL Pick-List</li>
-		</ul>
-	</li>
-	<li>daily tasks object? => form will take care of this. daily log too</li>
-	<li>cleanup object => included in daily log</li>
-</ol>
+			<ol>
+				<li>README</li>
+				<li>Setup Wizard (Weekly)</li>
+				<li>App Settings</li>
+				<li>Completed Carts</li>
+				<li>Partial Carts</li>
+				<li>Shelf Reading</li>
+				<li>Real-Time highlighting/updates</li>
+			</ol>
 
-<hr>
+			<ul>
+				<li>Bunch of stats here, graphs, etc.
+					<ul>
+						<li>stat: filled carts today</li>
+						<li>stat: sorted carts today</li>
+						<li>stat: finished carts today</li>	
+					</ul>
+				</li>
+				<li>Each shelver should have a stat page
+					<ul>
+						<li>stat: department count</li>
+						<li>stat: daily tasks list count</li>
+						<li>stat: cleanup count</li>
+						<li>stat: cleanup early</li>
+						<li>stat: percentage of email</li>
+						<li>stat: percentage of shelf reading</li>
+					</ul>
+				</li>
+			</ul>			
+		</td>
+		<td>
+			<h4>Completed Cart Punchlist</h4>
 
-<h2>ipad app should...</h2>
-<ul>
-	<li>show completed carts per shelver + #carts sorted</li>
-	<li>show daily task list</li>
-	<li>show cleanup schedule</li>
-</ul>
+			<ol>
+				<li>Same Day</li>
+				<li>Partial (See Diane's notes)
+					<ul>
+						<li>Factor in when shift ends (default)</li>
+					</ul>
+				</li>
+			</ol>			
 
-<hr>
+			<h4>Shelvers Punchlist</h4>
 
-<p>(time_diff / 1.minute).round</p>
-<p>Week number: Time.now.strftime("%U").to_i<br>Week Numbers span 0-52</p>
-<p>Select Shelvers for the day => Shelver.all.select{|x| x if x.schedules[0].mon != nil}.map{|y| y.first_name}</p>
-<p>string to method => .send(string)</p>
-<p>Date.commercial(2020, 1, 1) => Mon, 30 Dec 2019</p>
-<p>string to object => x.to_sym</p>
+			<ul>
+				<li>Show Shelver
+					<ul>
+						<li>this week's schedule</li>
+						<li>finished carts</li>
+						<li>current carts</li>
+						<li>history/trends
+							<ul>
+								<li>show assigned department count</li>
+								<li>show cleanup count by department</li>
+								<li>show assigned daily tasks count</li>
+								<li>show finished carts count</li>
+								<li>show sorted carts count</li>
+							</ul>
+						</li>
+						<li>calculate speed: carts/hour</li>
+					</ul>
+				</li>
+				<li>Edit Shelver</li>
+				<li>Delete/Deactivate Shelver</li>
+				<li>Add Active attribute</li>
+			</ul>
 
-<hr>
+		</td>
+		<td>
+			<h4>Notes</h4>
 
-<h3>Danny's Requests...</h3>
-<ul>
-	<li>Reassignment for daily tasks (i.e. someone calls in sick)</li>
-	<li>Cart list sorted by importance</li>
-	<li>Daily History: month's worth?</li>
-</ul>
-<hr>
+			<ol>
+				<li>Add to Daily Tasks
+					<ul>
+					<li>Unpack RAILS bins</li>
+					<li>ILL Pick-List</li>
+					</ul>
+				</li>
+				<li>daily tasks object? => form will take care of this. daily log too</li>
+				<li>cleanup object => included in daily log</li>
+			</ol>
 
-<h3>Notes from Diane</h3>
-<ul>
-	<li>Time to fill cart: does not need to include shelver hours
-		<ul>
-			<li>from fill start to shelving end</li>
-		</ul>
-	</li>
-	<li>Day Started/Day Ended - span</li>
-	<li>Take note of Sunday opening</li>
- </ul>
+			<h4>Bugs</h4>
+
+			<ul>
+				<li>Beginning of year, week 1/day 1 (2020)</li>
+				<li>End of year, week 53 (2020)</li>
+			</ul>
+
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3"><hr></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<p><%= image_tag("/images/shelvers_schedule.jpg", class: "fpo") %></p>			
+		</td>
+		<td>
+			<h2>ipad app should...</h2>
+			<ul>
+				<li>show completed carts per shelver + #carts sorted</li>
+				<li>show daily task list</li>
+				<li>show cleanup schedule</li>
+			</ul>
+
+			<hr>
+
+			<h3>Danny's Requests...</h3>
+			<ul>
+				<li>Reassignment for daily tasks (i.e. someone calls in sick)</li>
+				<li>Cart list sorted by importance</li>
+				<li>Daily History: month's worth?</li>
+			</ul>
+			<hr>
+
+			<h3>Notes from Diane</h3>
+			<ul>
+				<li>Time to fill cart: does not need to include shelver hours
+					<ul>
+						<li>from fill start to shelving end</li>
+					</ul>
+				</li>
+				<li>Day Started/Day Ended - span</li>
+				<li>Take note of Sunday opening</li>
+			 </ul>
+
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<hr>
+
+			<p>(time_diff / 1.minute).round</p>
+			<p>Week number: Time.now.strftime("%U").to_i<br>Week Numbers span 0-52</p>
+			<p>Select Shelvers for the day => Shelver.all.select{|x| x if x.schedules[0].mon != nil}.map{|y| y.first_name}</p>
+			<p>string to method => .send(string)</p>
+			<p>Date.commercial(2020, 1, 1) => Mon, 30 Dec 2019</p>
+			<p>string to object => x.to_sym</p>			
+		</td>
+	</tr>
+ </table>
