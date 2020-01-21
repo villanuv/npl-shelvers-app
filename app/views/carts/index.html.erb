@@ -23,7 +23,7 @@
 	<% @carts.each do |cart| %><tr>
 		<% contents = cart.cart_contents.last %>
 		<td><%= cart.id %></td>
-		<td><%= cart.name %>
+		<td><%= link_to cart.name, cart %></td>
 		<td><%= contents.book_collection %></td>
 		<td>&nbsp;</td>
 		<td><%= contents.check_in_start.strftime("%m/%d/%y, %-l:%M %p") %></td>
@@ -32,7 +32,7 @@
 		<td><%= contents.shelving_start %></td>
 		<td><%= contents.shelving_end %></td>
 		<td><%= contents.shelver_starter.first_name %> <%= contents.shelver_starter.last_name %></td>
-		<td><a href=""><i class="fas fa-info-circle"></i></a></td>
+		<td><%= link_to '<i class="fas fa-info-circle"></i>'.html_safe, cart %></td>
 	</tr><% end %>
 </table>
 

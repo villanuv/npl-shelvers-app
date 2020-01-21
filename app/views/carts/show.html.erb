@@ -1,0 +1,33 @@
+<%= render 'menu' %>
+
+<h2><%= @cart.name %></h2>
+
+<p><%= @svg.html_safe %></p>
+
+<!-- <p>id: integer, book_collection: string, status: string, check_in_start: datetime, check_in_end: datetime, sorted_by: string, sorted_date: datetime, shelving_start: datetime, shelving_start_page: string, shelving_end: datetime, shelving_end_page: string, cart_id: integer, shelver_starter_id: integer, shelver_finisher_id: integer, clerk_starter_id: integer, clerk_finisher_id: integer, created_at: datetime, updated_at: datetime</p> -->
+
+
+<p>
+	book collection: <%= @current_contents.book_collection %><br>
+	status: <%= @current_contents.status %>
+</p>
+
+<p>
+	check-in start: <%= @current_contents.check_in_start.strftime("%-m/%-d/%Y, %-l:%M%P") %><br>
+	check-in end: <%= @current_contents.check_in_end.strftime("%-m/%-d/%Y, %-l:%M%P") if @current_contents.check_in_end != nil %>
+</p>
+
+<p>
+	sorted by: <%= @current_contents.sorted_by %><br>
+	sorted date: <%= @current_contents.sorted_date.strftime("%-m/%-d/%Y, %-l:%M%P") if @current_contents.sorted_date != nil %>
+</p>
+
+<p>
+	shelving start: <%= @current_contents.shelving_start.strftime("%-m/%-d/%Y, %-l:%M%P") if @current_contents.shelving_start != nil %><br> 
+	shelving end: <%= @current_contents.shelving_end.strftime("%-m/%-d/%Y, %-l:%M%P") if @current_contents.shelving_end != nil %>
+</p>
+
+<p>
+	shelver starter: <%= "#{@current_contents.shelver_starter.first_name} #{@current_contents.shelver_starter.last_name}" %><br>
+	shelver finisher: <%= "#{@current_contents.shelver_starter.first_name} #{@current_contents.shelver_starter.last_name}" %>
+</p>
