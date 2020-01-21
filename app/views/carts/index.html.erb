@@ -11,7 +11,7 @@
 	<div class="row">
 <table border="1">
 	<tr>
-		<th>Cart ID</th>
+		<th>ID</th>
 		<th>Cart Name</th>
 		<th>Book Collection</th>
 		<th>Status</th>
@@ -21,6 +21,8 @@
 		<th>Shelving Start</th>
 		<th>Shelving End</th>
 		<th>Current Shelver</th>
+		<th>Time to Fill Cart</th>
+		<th>Fill to Shelf</th>
 		<th></th>
 	</tr>
 	<% @carts.each do |cart| %><tr>
@@ -35,11 +37,13 @@
 		<td><%= contents.shelving_start %></td>
 		<td><%= contents.shelving_end %></td>
 		<td><%= contents.shelver_starter.first_name %> <%= contents.shelver_starter.last_name %></td>
+		<td></td>
+		<td></td>
 		<td><%= link_to '<i class="fas fa-info-circle"></i>'.html_safe, cart %></td>
 	</tr><% end %>
 </table>
 
-<p><hr /></p>
+<!-- <p><hr /></p>
 
 <h3>Static Table</h3>
 
@@ -122,6 +126,6 @@
 		<td>Shelver Name</td>
 		<td><a href="#"><i class="fas fa-info-circle"></i></a></td>
 	</tr>
-</table>
+</table> -->
 	</div>
 </div>

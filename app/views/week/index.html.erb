@@ -30,6 +30,7 @@
 		<th>Cleanup</th>
 		<th>#Carts Shelved</th>
 		<th>#Carts Sorted</th>
+		<th></th>
 	</tr>
 <% @shelvers.each do |shelver| %>
 	<tr>
@@ -54,6 +55,7 @@
 		<% end %>
 		<td>{{ generated }}</td>
 		<td>{{ generated }}</td>
+		<td><a href="#"><i class="fas fa-edit"></i></a></td>
 	</tr>
 <% end if @shelvers != nil %>
 <% if @shelvers == nil %>
