@@ -2,22 +2,13 @@ class WeekController < ApplicationController
 
 	def index
 		if params[(:week_number)] == nil
-			if (DateTime.now+1.day).cweek == (DateTime.now).cweek + 1
-				@week = DateTime.now.cweek + 1
-			else
-				@week = DateTime.now.cweek
-			end
-
 			# wday range: 0..6
 			@day = DateTime.now.wday + 1
-			@year = DateTime.now.strftime("%Y").to_i
 			get_date(@week, @day, @year)
 			set_previous_next_link_variables
 		end
 
 		@day_symbol = DateTime.now.strftime("%a").downcase
-		# active = Shelver.all.select{|s| s.last_day == nil}
-		# @shelvers = active.select{|s| "#{s.first_name + s.last_name}" if s.schedules.count > 0 && s.schedules.find_by_week_number(@week).send(day_symbol) != nil}.sort_by {|s| s.last_name}
 		@schedules_this_week = Schedule.select{|sched| sched.week_number == @week}
 		if @schedules_this_week.count > 0
 			@shelvers = Schedule.select{|x| x.send(@day_symbol) != nil && x.week_number == @week}.map{|sched| sched.shelver}.sort_by{|s| s.last_name}
@@ -26,13 +17,13 @@ class WeekController < ApplicationController
 
 
 	def show
-		if params[(:week_number)].to_i > 0 && params[(:week_number)].to_i < 53 && params[(:day_number)].to_i > 0 && params[(:day_number)].to_i < 8
+		if params[(:week_number)].to_i > 0 && params[(:week_number)].to_i < 54 && params[(:day_number)].to_i > 0 && params[(:day_number)].to_i < 8
 			@week = params[(:week_number)].to_i
 			@day = params[(:day_number)].to_i
 			@year = params[(:year)].to_i
 			get_date(@week, @day, @year)
 			set_previous_next_link_variables_show
-		elsif params[(:day_number)].to_i > 7 || params[(:day_number)].to_i < 1 || params[(:week_number)].to_i > 52 || params[(:week_number)].to_i < 1
+		elsif params[(:day_number)].to_i > 7 || params[(:day_number)].to_i < 1 || params[(:week_number)].to_i > 53 || params[(:week_number)].to_i < 1
 			redirect_to root_path
 		end
 
