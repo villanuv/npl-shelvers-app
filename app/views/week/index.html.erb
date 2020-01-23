@@ -13,12 +13,13 @@
 			Invalid Date or Data Error<br>
 			Week Number: <%= @week %>, Day Number: <%= @day %>
 		</p>
-		<% else %>
+	<% else %>
 		<p>
 			Week Number: <%= @week %>, Day Number: <%= @day %>
 		</p>
 	</div>
 	<div class="row">
+
 		<table border="1">
 			<tr>
 				<th>Shelver</th>
@@ -35,9 +36,6 @@
 		<% @shelvers.each do |shelver| %>
 			<tr>
 				<% day_object = DateTime.now.strftime("%a").downcase %>
-				<%# cleanup_start = shelver.schedules.last.send(day_object).split("-").first %>
-				<%# cleanup_end = (cleanup_start.to_i + 1) % 12 %>
-				<%# cleanup_period = "#{cleanup_start}-#{cleanup_end}" %>
 				<td><%= link_to "#{shelver.last_name}, #{shelver.first_name}", shelver %></td>
 				<td><%= shelver.schedules.last.send(day_object) %></td>
 				<% if shelver.daily_logs.map{|dl| dl.week_number}.include?(@week) && shelver.daily_logs.map{|dl| dl.day_number}.include?(@day) %>

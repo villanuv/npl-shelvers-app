@@ -2,79 +2,75 @@
 
 <div class="container">
 	<div class="row">
-<h2><%= @todays_date %> 
-	<a href="/<%= @previous_year %>/week/<%= @previous_week %>/day/<%= @previous_day %>"><i class="fas fa-arrow-alt-circle-left"></i></a> 
-	<a href="/<%= @next_year %>/week/<%= @next_week %>/day/<%= @next_day %>"><i class="fas fa-arrow-alt-circle-right"></i></a>
-</h2>
+		<h2><%= @todays_date %> 
+			<a href="/<%= @previous_year %>/week/<%= @previous_week %>/day/<%= @previous_day %>"><i class="fas fa-arrow-alt-circle-left"></i></a> 
+			<a href="/<%= @next_year %>/week/<%= @next_week %>/day/<%= @next_day %>"><i class="fas fa-arrow-alt-circle-right"></i></a>
+		</h2>
 
-<% if @week > 52 || @day > 7 || @week < 1 || @day < 1 %>
-	<h3>Blue Screen</h3>
-	<p>
-		Invalid Date or Data Error<br>
-		Week Number: <%= @week %>, Day Number: <%= @day %>
-	</p>
-<% else %>
-<p>
-	Week Number: <%= @week %>, Day Number: <%= @day %><br>
-</p>
+	<% if @week > 52 || @day > 7 || @week < 1 || @day < 1 %>
+		<h3>Blue Screen</h3>
+		<p>
+			Invalid Date or Data Error<br>
+			Week Number: <%= @week %>, Day Number: <%= @day %>
+		</p>
+	<% else %>
+		<p>
+			Week Number: <%= @week %>, Day Number: <%= @day %><br>
+		</p>
 	</div>
 	<div class="row">
 
-<table border="1">
-	<tr>
-		<th>Shelver</th>
-		<th>Hours Today</th>
-		<th>Email</th>
-		<th>Shelf<br>Reading</th>
-		<th>Department</th>
-		<th>Daily Tasks</th>
-		<th>Cleanup</th>
-		<th>#Carts Shelved</th>
-		<th>#Carts Sorted</th>
-		<th></th>
-	</tr>
-<% @shelvers.each do |shelver| %>
-	<tr>
-		<% sched = shelver.schedules.select{|x| x.week_number == @week}[0].send(@day_symbol) %>
-		<% hours_array = sched.split("(")[0].split("-") %>
-		<td><%= link_to "#{shelver.last_name}, #{shelver.first_name}", shelver %></td>
-		<td><%= sched %></td>
-		<% if shelver.daily_logs.map{|dl| dl.week_number}.include?(@week) && shelver.daily_logs.map{|dl| dl.day_number}.include?(@day) %>
-		<td></td>
-		<td></td>
-		<% log_for_day = shelver.daily_logs.select{|log| log.year == @year && log.week_number == @week && log.day_number == @day }[0] %>
-		<% if log_for_day != nil %>
-		<td><%= log_for_day.department %></td>
-		<td><%= log_for_day.daily_tasks %></td>
-		<td><%= log_for_day.cleanup %> (<% if log_for_day.cleanup_early %><%= hours_array[0] %>-<%= (hours_array[0].to_i + 1)%12 %><% else %><%= (hours_array[1].to_i-1) == 0 ? 12 : (hours_array[1].to_i - 1)%12 %>-<%= hours_array[1] %><% end %>)</td>
-		<% else %>
-		<td>yo</td>
-		<td></td>
-		<td></td>
-		<td>?</td>
+		<table border="1">
+			<tr>
+				<th>Shelver</th>
+				<th>Hours Today</th>
+				<th>Email</th>
+				<th>Shelf<br>Reading</th>
+				<th>Department</th>
+				<th>Daily Tasks</th>
+				<th>Cleanup</th>
+				<th>#Carts Shelved</th>
+				<th>#Carts Sorted</th>
+				<th></th>
+			</tr>
+		<% @shelvers.each do |shelver| %>
+			<tr>
+				<td><%= link_to "#{shelver.last_name}, #{shelver.first_name}", shelver %></td>
+				<td><%= shelver.sched_for_day(@year, @week, @day_symbol) %></td>
+				<% daily_log = shelver.show_daily_log(@year, @week, @day) %>
+
+				<% if daily_log != nil %>
+				<td><%= daily_log.email %></td>
+				<td><%= daily_log.shelf_reading %></td>
+				<td><%= daily_log.department %></td>
+				<td><%= daily_log.daily_tasks %></td>
+				<td><%= daily_log.cleanup %></td>
+				<td>{{ generated }}</td>
+				<td>{{ generated }}</td>
+				<td><%= link_to '<i class="fas fa-info-circle"></i>'.html_safe, shelver %></td>
+				<% else %>
+				<td></td>
+				<td></td>
+				<td colspan="5"><i class="fas fa-exclamation-triangle"></i> No Daily Log found</td>
+				<td><%= link_to '<i class="fas fa-info-circle"></i>'.html_safe, shelver %></td> 
+				<% end %>
+
+			</tr>
 		<% end %>
-		<% else %>
-		<td colspan="5"><i class="fas fa-exclamation-triangle"></i> No Daily Log found</td>
+		<% if @shelvers.count == 0 %>
+			<tr>
+				<td colspan="10">No data</td>
+			</tr>
 		<% end %>
-		<td>{{ generated }}</td>
-		<td>{{ generated }}</td>
-		<td><a href="#"><i class="fas fa-info-circle"></i></a></td>
-	</tr>
-<% end %>
-<% if @shelvers.count == 0 %>
-	<tr>
-		<td colspan="9">No data</td>
-	</tr>
-<% end %>
-</table>
+		</table>
 	</div>
 
-<% end %>
+	<% end %>
 
-<div class="row">
-<p>
-	<%= render 'notes' %>
-</p>
-</div>
+	<div class="row">
+	<p>
+		<%= render 'notes' %>
+	</p>
+	</div>
 
 </div>
