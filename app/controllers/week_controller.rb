@@ -17,14 +17,16 @@ class WeekController < ApplicationController
 
 
 	def show
+		if params[(:week_number)].to_i > 53 || params[(:week_number)].to_i < 1 || params[(:day_number)].to_i > 7 || params[(:day_number)].to_i < 1
+			redirect_to root_path
+		end
+
 		if params[(:week_number)].to_i > 0 && params[(:week_number)].to_i < 54 && params[(:day_number)].to_i > 0 && params[(:day_number)].to_i < 8
 			@week = params[(:week_number)].to_i
 			@day = params[(:day_number)].to_i
 			@year = params[(:year)].to_i
 			get_date(@week, @day, @year)
 			set_previous_next_link_variables_show
-		elsif params[(:day_number)].to_i > 7 || params[(:day_number)].to_i < 1 || params[(:week_number)].to_i > 53 || params[(:week_number)].to_i < 1
-			redirect_to root_path
 		end
 
 		@day_symbol = Date.commercial(@year, @week, @previous_day).strftime("%a").downcase

@@ -2,34 +2,36 @@
 
 <div class="container">
 	<div class="row">
-<h1>Library Hours</h1>
-
-<p><a href="#">Change Hours for Week</a></p>
-
-<table border="1" style="width: 50%">
-	<tr>
-		<th colspan="7"><%= @start_of_week %>-<%= @end_of_week %></th>
-	</tr>
-	<tr>
-		<td>Sun</td>
-		<td>Mon</td>
-		<td>Tue</td>
-		<td>Wed</td>
-		<td>Thu</td>
-		<td>Fri</td>
-		<td>Sat</td>
-	</tr>
-	<tr>
-	</tr>
-	<tr>
-		<td><%= @hours.sun %></td>
-		<td><%= @hours.mon %></td>
-		<td><%= @hours.tue %></td>
-		<td><%= @hours.wed %></td>
-		<td><%= @hours.thu %></td>
-		<td><%= @hours.fri %></td>
-		<td><%= @hours.sat %></td>
-	</tr>
-</table>
-</div>
+		<h1>Library Hours</h1>
+	</div>
+	<div class="row">
+		<p><a href="#">Change Hours for Week</a></p>
+	</div>
+	<div class="row">
+		<table border="1" style="width: 50%">
+			<tr>
+				<th colspan="7"><%= @start_of_week %>-<%= @end_of_week %></th>
+			</tr>
+			<tr>
+				<td>Sun</td>
+				<td>Mon</td>
+				<td>Tue</td>
+				<td>Wed</td>
+				<td>Thu</td>
+				<td>Fri</td>
+				<td>Sat</td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td><%= @hours.sun %></td>
+				<td><%= @hours.mon %></td>
+				<td><%= @hours.tue %></td>
+				<td><%= @hours.wed %></td>
+				<td><%= @hours.thu %></td>
+				<td><%= @hours.fri %></td>
+				<td><%= @hours.sat %></td>
+			</tr>
+		</table>
+	</div>
 </div>

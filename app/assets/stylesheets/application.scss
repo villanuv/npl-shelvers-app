@@ -10,9 +10,12 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+ @import "bootstrap";
+
+ body {
+  font-size: 14px;
+ } 
 
  .alert, .notice {
   display: none;
@@ -22,8 +25,16 @@
   text-decoration: line-through;
 }
 
+table {
+  width: 100%;
+}
+
 table.notes td {
   vertical-align: top;
+}
+
+table td.edit-icon {
+  text-align: center;
 }
 
 ul.nav {
@@ -57,4 +68,8 @@ ul.nav {
 
 .fa-exclamation-triangle {
   color: #e23f3f;
+}
+
+.fpo {
+  width: 90%;
 }

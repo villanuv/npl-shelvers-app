@@ -1,13 +1,17 @@
 <%= render 'menu' %>
 
-<div class="container">
+<div class="container nopadding">
 	<div class="row">
-		<h2><%= @todays_date %> 
+		<div class="float-left">
+			<h2><%= @todays_date %> 
 			<a href="/<%= @previous_year %>/week/<%= @previous_week %>/day/<%= @previous_day %>"><i class="fas fa-arrow-alt-circle-left"></i></a> 
 			<a href="/<%= @next_year %>/week/<%= @next_week %>/day/<%= @next_day %>"><i class="fas fa-arrow-alt-circle-right"></i></a>
-		</h2>
-
-	<% if @week > 52 || @day > 7 || @week < 1 || @day < 1 %>
+			</h2>
+		</div>
+		<div class="ml-auto"><h2><a href="#myModal"><i class="fas fa-user-edit" data-toggle="modal"></i></a></h2></div>
+	</div>
+	<div class="row">
+	<% if @week > 53 || @day > 7 || @week < 1 || @day < 1 %>
 		<h3>Blue Screen</h3>
 		<p>
 			Invalid Date or Data Error<br>
@@ -31,7 +35,7 @@
 				<th>Cleanup</th>
 				<th>#Carts Shelved</th>
 				<th>#Carts Sorted</th>
-				<th></th>
+				<th>&nbsp;</th>
 			</tr>
 		<% @shelvers.each do |shelver| %>
 			<tr>
@@ -49,7 +53,7 @@
 				<% end %>
 				<td>{{ generated }}</td>
 				<td>{{ generated }}</td>
-				<td><a href="#"><i class="fas fa-edit"></i></a></td>
+				<td class="edit-icon"><a href="#"><i class="fas fa-plus-circle"></i></a></td>
 			</tr>
 		<% end if @shelvers != nil %>
 		<% if @shelvers == nil %>
@@ -66,6 +70,21 @@
 	<p>
 		<%= render 'notes' %>
 	</p>
+	</div>
+
+	<!-- Modal -->
+	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	    <h3 id="myModalLabel">Modal header</h3>
+	  </div>
+	  <div class="modal-body">
+	    <p>One fine body…</p>
+	  </div>
+	  <div class="modal-footer">
+	    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	    <button class="btn btn-primary">Save changes</button>
+	  </div>
 	</div>
 
 </div>

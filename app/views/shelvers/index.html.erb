@@ -2,15 +2,15 @@
 
 <div class="container">
 	<div class="row">
-<h1>All Shelvers: Week #<%= @week %></h1>
-
-<p><a href="">Enter Shelver's Weekly Schedule</a> | <%= link_to '+New Shelver', new_shelver_path %></p>
-
-<!-- <h3>Dynamic Table</h3> -->
-
+		<h1>All Shelvers: Week #<%= @week %></h1>
+	</div>
+	<div class="row">
+		<p><a href="">Enter Shelver's Weekly Schedule</a> | <%= link_to '+New Shelver', new_shelver_path %></p>
+	</div>
+	<div class="row">
 <table border="1">
 	<tr>
-		<th rowspan="2">Name</th>
+		<th rowspan="2">Name <a href="#"><i class="fas fa-plus-circle"></i></a></th>
 		<th colspan="7">Schedule: <%= @start_of_week %>-<%= @end_of_week %></th>
 		<th rowspan="2">Total Hours</th>
 		<th rowspan="2"></th>
@@ -36,7 +36,7 @@
 		<td><%= current_schedule.fri if current_schedule != nil %></td>
 		<td><%= current_schedule.sat if current_schedule != nil %></td>
 		<td><%= current_schedule.total_hours %></td>
-		<td><%= link_to '<i class="fas fa-edit"></i>'.html_safe, shelver %></td>
+		<td class="edit-icon"><%= link_to '<i class="fas fa-edit"></i>'.html_safe, shelver %></td>
 	</tr>
 	<% end %>
 	<tr><td colspan="10" bgcolor="#e0e0e0" style="font-weight: bold;">Archived Shelvers</td></tr>
@@ -44,7 +44,7 @@
 		<tr>
 			<td><%= link_to "#{shelver.last_name}, #{shelver.first_name}", shelver %></td>
 			<td colspan="8"></td>
-			<td><%= link_to '<i class="fas fa-edit"></i>'.html_safe, shelver %></td>
+			<td class="edit-icon"><%= link_to '<i class="fas fa-edit"></i>'.html_safe, shelver %></td>
 		</tr>
 	<% end %>
 </table>

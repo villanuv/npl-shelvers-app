@@ -2,12 +2,16 @@
 
 <div class="container">
 	<div class="row">
-		<h2><%= @todays_date %> 
+		<div class="float-left">
+			<h2><%= @todays_date %> 
 			<a href="/<%= @previous_year %>/week/<%= @previous_week %>/day/<%= @previous_day %>"><i class="fas fa-arrow-alt-circle-left"></i></a> 
 			<a href="/<%= @next_year %>/week/<%= @next_week %>/day/<%= @next_day %>"><i class="fas fa-arrow-alt-circle-right"></i></a>
-		</h2>
-
-	<% if @week > 52 || @day > 7 || @week < 1 || @day < 1 %>
+			</h2>
+		</div>
+		<div class="ml-auto"><h2><a href=""><i class="fas fa-user-edit"></i></a></h2></div>
+	</div>
+	<div class="row">
+	<% if @week > 53 || @day > 7 || @week < 1 || @day < 1 %>
 		<h3>Blue Screen</h3>
 		<p>
 			Invalid Date or Data Error<br>
@@ -15,7 +19,7 @@
 		</p>
 	<% else %>
 		<p>
-			Week Number: <%= @week %>, Day Number: <%= @day %><br>
+			Week Number: <%= @week %>, Day Number: <%= @day %>
 		</p>
 	</div>
 	<div class="row">
@@ -47,12 +51,12 @@
 				<td><%= daily_log.cleanup %></td>
 				<td>{{ generated }}</td>
 				<td>{{ generated }}</td>
-				<td><%= link_to '<i class="fas fa-info-circle"></i>'.html_safe, shelver %></td>
+				<td class="edit-icon"><%= link_to '<i class="fas fa-info-circle"></i>'.html_safe, shelver %></td>
 				<% else %>
-				<td></td>
-				<td></td>
 				<td colspan="5"><i class="fas fa-exclamation-triangle"></i> No Daily Log found</td>
-				<td><%= link_to '<i class="fas fa-info-circle"></i>'.html_safe, shelver %></td> 
+				<td>{{ generated }}</td>
+				<td>{{ generated }}</td>
+				<td class="edit-icon"><%= link_to '<i class="fas fa-info-circle"></i>'.html_safe, shelver %></td> 
 				<% end %>
 
 			</tr>
