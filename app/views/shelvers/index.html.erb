@@ -2,15 +2,17 @@
 
 <div class="container">
 	<div class="row">
-		<h1>All Shelvers: Week #<%= @week %></h1>
-	</div>
-	<div class="row">
-		<p><a href="">Enter Shelver's Weekly Schedule</a> | <%= link_to '+New Shelver', new_shelver_path %></p>
+		<div class="float-left">
+			<h1>All Shelvers: Week #<%= @week %></h1>
+		</div>
+		<div class="ml-auto">
+			<h1><a href="#"><i class="far fa-calendar-alt"></i></a></h1>
+		</div>
 	</div>
 	<div class="row">
 <table border="1">
 	<tr>
-		<th rowspan="2">Name <a href="#"><i class="fas fa-plus-circle"></i></a></th>
+		<th rowspan="2">Name <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_shelver_path %></th>
 		<th colspan="7">Schedule: <%= @start_of_week %>-<%= @end_of_week %></th>
 		<th rowspan="2">Total Hours</th>
 		<th rowspan="2"></th>
