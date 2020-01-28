@@ -1,12 +1,12 @@
 <%= render 'menu' %>
 
-<div class="container">
+<div class="container py-4">
 	<div class="row">
 		<div class="float-left">
-			<h2><%= @todays_date %> 
+			<h2>
 			<a href="/<%= @previous_year %>/week/<%= @previous_week %>/day/<%= @previous_day %>"><i class="fas fa-arrow-alt-circle-left"></i></a> 
 			<a href="/<%= @next_year %>/week/<%= @next_week %>/day/<%= @next_day %>"><i class="fas fa-arrow-alt-circle-right"></i></a>
-			</h2>
+			<%= @todays_date %></h2>
 		</div>
 		<div class="ml-auto"><h2><a href=""><i class="fas fa-user-edit"></i></a></h2></div>
 	</div>

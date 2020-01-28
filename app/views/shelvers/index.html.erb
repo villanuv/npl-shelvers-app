@@ -1,6 +1,6 @@
 <%= render 'menu' %>
 
-<div class="container">
+<div class="container py-4">
 	<div class="row">
 		<div class="float-left">
 			<h1>All Shelvers: Week #<%= @week %></h1>
@@ -10,53 +10,52 @@
 		</div>
 	</div>
 	<div class="row">
-<table border="1">
-	<tr>
-		<th rowspan="2">Name <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_shelver_path %></th>
-		<th colspan="7">Schedule: <%= @start_of_week %>-<%= @end_of_week %></th>
-		<th rowspan="2">Total Hours</th>
-		<th rowspan="2"></th>
-	</tr>
-	<tr>
-		<td>Sun</td>
-		<td>Mon</td>
-		<td>Tue</td>
-		<td>Wed</td>
-		<td>Thu</td>
-		<td>Fri</td>
-		<td>Sat</td>
-	</tr>
-	<% @shelvers.each do |shelver| %>
-		<% current_schedule = shelver.schedules.last %>
-	<tr>
-		<td><%= link_to "#{shelver.last_name}, #{shelver.first_name}", shelver %></td>
-		<td><%= current_schedule.sun if current_schedule != nil %></td>
-		<td><%= current_schedule.mon if current_schedule != nil %></td>
-		<td><%= current_schedule.tue if current_schedule != nil %></td>
-		<td><%= current_schedule.wed if current_schedule != nil %></td>
-		<td><%= current_schedule.thu if current_schedule != nil %></td>
-		<td><%= current_schedule.fri if current_schedule != nil %></td>
-		<td><%= current_schedule.sat if current_schedule != nil %></td>
-		<td><%= current_schedule.total_hours %></td>
-		<td class="edit-icon"><%= link_to '<i class="fas fa-edit"></i>'.html_safe, shelver %></td>
-	</tr>
-	<% end %>
-	<tr><td colspan="10" bgcolor="#e0e0e0" style="font-weight: bold;">Archived Shelvers</td></tr>
-	<% @past_shelvers.each do |shelver| %>
-		<tr>
-			<td><%= link_to "#{shelver.last_name}, #{shelver.first_name}", shelver %></td>
-			<td colspan="8"></td>
-			<td class="edit-icon"><%= link_to '<i class="fas fa-edit"></i>'.html_safe, shelver %></td>
-		</tr>
-	<% end %>
-</table>
-
-<p><hr /></p>
-
-<p><%= image_tag("/images/shelf_reading.jpg", class: "fpo") %></p>
-
-<p><hr /></p>
-</div>
+		<table border="1">
+			<tr>
+				<th rowspan="2">Name <%= link_to '<i class="fas fa-user-plus"></i>'.html_safe, new_shelver_path %></th>
+				<th colspan="7">Schedule: <%= @start_of_week %>-<%= @end_of_week %></th>
+				<th rowspan="2">Total Hours</th>
+				<th rowspan="2"></th>
+			</tr>
+			<tr>
+				<td>Sun</td>
+				<td>Mon</td>
+				<td>Tue</td>
+				<td>Wed</td>
+				<td>Thu</td>
+				<td>Fri</td>
+				<td>Sat</td>
+			</tr>
+			<% @shelvers.each do |shelver| %>
+				<% current_schedule = shelver.schedules.last %>
+			<tr>
+				<td><%= link_to "#{shelver.last_name}, #{shelver.first_name}", shelver %></td>
+				<td><%= current_schedule.sun if current_schedule != nil %></td>
+				<td><%= current_schedule.mon if current_schedule != nil %></td>
+				<td><%= current_schedule.tue if current_schedule != nil %></td>
+				<td><%= current_schedule.wed if current_schedule != nil %></td>
+				<td><%= current_schedule.thu if current_schedule != nil %></td>
+				<td><%= current_schedule.fri if current_schedule != nil %></td>
+				<td><%= current_schedule.sat if current_schedule != nil %></td>
+				<td><%= current_schedule.total_hours %></td>
+				<td class="edit-icon"><%= link_to '<i class="fas fa-edit"></i>'.html_safe, shelver %></td>
+			</tr>
+			<% end %>
+			<tr><td colspan="10" bgcolor="#e0e0e0" style="font-weight: bold;">Archived Shelvers</td></tr>
+			<% @past_shelvers.each do |shelver| %>
+				<tr>
+					<td><%= link_to "#{shelver.last_name}, #{shelver.first_name}", shelver %></td>
+					<td colspan="8"></td>
+					<td class="edit-icon"><%= link_to '<i class="fas fa-edit"></i>'.html_safe, shelver %></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+	<div class="row">
+		<p><hr></p>
+		<p><%= image_tag("/images/shelf_reading.jpg", style: "width: 50%;") %></p>
+		<p><hr></p>
+	</div>
 </div>
 
 <!-- <h3>Static Table</h3>

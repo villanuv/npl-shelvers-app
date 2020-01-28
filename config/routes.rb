@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :shelvers
 
+  resources :daily_logs, only: [:create]
+
   get '/:year/week/:week_number/day/:day_number' => 'week#show'
 
   get '/library-hours' => 'library_hours#index'

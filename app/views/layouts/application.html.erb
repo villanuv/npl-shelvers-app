@@ -4,9 +4,12 @@
   <title>ShelversApp</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css">
   <%= javascript_include_tag 'application' %>
-
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
+  <script>
+  	$('select').selectpicker();
+  </script>
   <%= csrf_meta_tags %>
 </head>
 <body>
