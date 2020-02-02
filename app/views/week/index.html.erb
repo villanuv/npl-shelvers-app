@@ -37,6 +37,11 @@
 				<th>#Carts Sorted</th>
 				<th>&nbsp;</th>
 			</tr>
+		<% if @shelvers == nil %>
+			<tr>
+				<td colspan="10">No data</td>
+			</tr>
+		<% else %>
 		<% @shelvers.each do |shelver| %>
 			<tr>
 				<% day_object = DateTime.now.strftime("%a").downcase %>
@@ -55,36 +60,25 @@
 				<td>{{ generated }}</td>
 				<td class="edit-icon"><a href="#"><i class="fas fa-plus-circle" data-toggle="modal" data-target="#shelverModal"></i></a></td>
 			</tr>
-		<% end if @shelvers != nil %>
-		<% if @shelvers == nil %>
-			<tr>
-				<td colspan="9">No data</td>
-			</tr>
+		<% end %>
 		<% end %>
 		</table>
 	</div>
 
-	<% end %>
-
-	<div class="row">
-	<p>
-		<%= render 'notes' %>
-	</p>
-	</div>
-
 	<!-- The Modal -->
-	<div class="modal" id="myModal">
+ 	<div class="modal" id="myModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 
-			<!-- Modal Header -->
 			<div class="modal-header">
 				<h4 class="modal-title">Edit All Daily Tasks</h4>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 
-			<!-- Modal body -->
 			<div class="modal-body">
+				<% if @shelvers == nil %>
+					<p>No Shelvers</p>
+				<% else %>
 				<% @shelvers.each do |shelver| %>
 				<div class="pb-3">
 					<h6 class="font-weight-bold"><%= shelver.last_name %></h6>
@@ -106,55 +100,19 @@
 							<td><%= f.label :cleanup %>: </td>
 							<td><%= f.select(:cleanup, ['Fiction & Media', 'Reference', 'Youth Services', ['No Cleanup', '']]) %></td>
 						</tr>
-<!-- <div class="btn-group btn-group-toggle" data-toggle="buttons">
-  <label class="btn btn-secondary active">
-    <input type="checkbox" autocomplete="off"> Unpack RAILS bins
-  </label>
-  <label class="btn btn-secondary">
-    <input type="checkbox" autocomplete="off"> Holds Pick-List Reference
-  </label>
-  <label class="btn btn-secondary">
-    <input type="checkbox" autocomplete="off"> Holds Pick-List YS
-  </label>
-  <label class="btn btn-secondary">
-    <input type="checkbox" autocomplete="off"> Holds Pick-List Fiction
-  </label>
-  <label class="btn btn-secondary">
-    <input type="checkbox" autocomplete="off"> Holds Pick-List Media
-  </label>
-  <label class="btn btn-secondary">
-    <input type="checkbox" autocomplete="off"> ILL Pick-List
-  </label>
-  <label class="btn btn-secondary">
-    <input type="checkbox" autocomplete="off"> Missing/In-Transit/Claims Reports
-  </label>
-  <label class="btn btn-secondary">
-    <input type="checkbox" autocomplete="off"> New Media
-  </label>
-  <label class="btn btn-secondary">
-    <input type="checkbox" autocomplete="off"> New Reference
-  </label>
-  <label class="btn btn-secondary">
-    <input type="checkbox" autocomplete="off"> New Fiction
-  </label>
-  <label class="btn btn-secondary">
-    <input type="checkbox" autocomplete="off"> New Juv/YA
-  </label>
-</div> -->
-
 						<tr>
 							<td><%= f.label :cleanup_early, "Early Cleanup" %>: </td>
 							<td><%= f.check_box :cleanup_early %></td>
 						</tr>						
 
-						<%#= f.submit "Create" %>
+						<%= f.submit "Create" %>
 					<% end %>
 					</table>
 				</div>
 				<% end %>
+				<% end %>
 			</div>
 
-			<!-- Modal footer -->
 			<div class="modal-footer">
 				<button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Submit</button>
 			</div>
@@ -165,33 +123,40 @@
 
 
 	<!-- The Modal -->
-	<div class="modal" id="shelverModal">
+<!-- 	<div class="modal" id="shelverModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 
-			<!-- Modal Header -->
 			<div class="modal-header">
 				<h4 class="modal-title">Edit Daily Tasks</h4>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 
-			<!-- Modal body -->
 			<div class="modal-body">
-				<% @shelvers.each do |shelver| %>
-				<h6 class="font-weight-bold"><%= "#{shelver.first_name} #{shelver.last_name[0]}." %></h6>
-
-
-
-				<% end %>
+				<%# if @shelvers == nil %>
+				<%# else %>
+				<%# @shelvers.each do |shelver| %>
+				<h6 class="font-weight-bold"><%#= "#{shelver.first_name} #{shelver.last_name[0]}." %></h6>
+				<%# end %>
 			</div>
 
-			<!-- Modal footer -->
 			<div class="modal-footer">
 				<button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Submit</button>
 			</div>
 
 			</div>
 		</div>
+	</div> -->
+
+
+
+
+	<% end %>
+
+	<div class="row">
+	<p>
+		<%= render 'notes' %>
+	</p>
 	</div>
 
 </div>
