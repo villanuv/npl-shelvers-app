@@ -24,6 +24,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'bootstrap', '~> 4.4.1'
 gem 'rqrcode'
+gem 'jquery-slick-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
