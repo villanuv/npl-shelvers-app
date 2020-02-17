@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   get '/setup-wizard' => 'wizard#index'
 
+  post '/setup-wizard' => 'wizard#import'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
