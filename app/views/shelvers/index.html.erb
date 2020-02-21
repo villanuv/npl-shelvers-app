@@ -13,6 +13,7 @@
 		<table border="1">
 			<tr>
 				<th rowspan="2">Name <%= link_to '<i class="fas fa-user-plus"></i>'.html_safe, new_shelver_path %></th>
+				<th rowspan="2">Current</th>
 				<th colspan="7">Schedule: <%= @start_of_week %>-<%= @end_of_week %></th>
 				<th rowspan="2">Total Hours</th>
 				<th rowspan="2"></th>
@@ -30,6 +31,7 @@
 				<% current_schedule = shelver.schedules.last %>
 			<tr>
 				<td><%= link_to "#{shelver.last_name}, #{shelver.first_name}", shelver %></td>
+				<td><% if @week == current_schedule.week_number.to_i %><i class="fas fa-check-circle"></i><% else %><i class="fas fa-times-circle"></i><% end %></td>
 				<td><%= current_schedule.sun if current_schedule != nil %></td>
 				<td><%= current_schedule.mon if current_schedule != nil %></td>
 				<td><%= current_schedule.tue if current_schedule != nil %></td>
@@ -41,11 +43,11 @@
 				<td class="edit-icon"><%= link_to '<i class="fas fa-edit"></i>'.html_safe, shelver %></td>
 			</tr>
 			<% end %>
-			<tr><td colspan="10" bgcolor="#e0e0e0" style="font-weight: bold;">Archived Shelvers</td></tr>
+			<tr><td colspan="11" bgcolor="#e0e0e0" style="font-weight: bold;">Archived Shelvers</td></tr>
 			<% @past_shelvers.each do |shelver| %>
 				<tr>
 					<td><%= link_to "#{shelver.last_name}, #{shelver.first_name}", shelver %></td>
-					<td colspan="8"></td>
+					<td colspan="9"></td>
 					<td class="edit-icon"><%= link_to '<i class="fas fa-edit"></i>'.html_safe, shelver %></td>
 				</tr>
 			<% end %>
