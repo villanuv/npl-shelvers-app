@@ -4,6 +4,7 @@
 	<div class="row">
 		<div class="float-left">
 			<h1>Spreadsheet Import</h1>
+			<p>Imported for Week #<%= @week %>: <%= @start_of_week %>-<%= @end_of_week %></p>
 		</div>
 	</div>
 	<div class="row">
@@ -33,7 +34,9 @@
 			</tr>
 			<% end %>
 		</table>
+		<p><%= link_to "Return to Home", root_path %></p>
 	</div>
+
 </div>
 
 

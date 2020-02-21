@@ -27,6 +27,10 @@ class WizardController < ApplicationController
 
 		@shelvers.each {|shelver| shelver["shelver_id"] = Shelver.find_by(first_name: shelver["first_name"], last_name: shelver["last_name"]).id }
 		@shelvers.sort_by!{|shelver| shelver["last_name"]}
+
+		@shelvers.each do |shelver_data|
+			Schedule.create!(week_number: @week, year: @year, sun: shelver_data["hours"][0], mon: shelver_data["hours"][1], tue: shelver_data["hours"][2], wed: shelver_data["hours"][3], thu: shelver_data["hours"][4], fri: shelver_data["hours"][5], sat: shelver_data["hours"][6], shelver_id: shelver_data["shelver_id"])
+		end
 	end
 
 end
