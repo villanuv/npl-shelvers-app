@@ -1,0 +1,42 @@
+<%= render 'menu' %>
+
+<div class="container py-4">
+	<div class="row">
+		<div class="float-left">
+			<h1>Spreadsheet Import</h1>
+			<p>Imported for Week #<%= @week %>: <%= @start_of_week %>-<%= @end_of_week %></p>
+		</div>
+	</div>
+	<div class="row">
+		<table border="1">
+			<tr>
+				<td>id</td>
+				<th>Name</th>
+				<td>Sun</td>
+				<td>Mon</td>
+				<td>Tue</td>
+				<td>Wed</td>
+				<td>Thu</td>
+				<td>Fri</td>
+				<td>Sat</td>
+			</tr>
+			<% @shelvers.each do |data| %>
+			<tr>
+				<td><%= data["shelver_id"] %></td>
+				<td><%= data["last_name"] %>, <%= data["first_name"] %></td>
+				<td><%= data["hours"][0] %></td>
+				<td><%= data["hours"][1] %></td>
+				<td><%= data["hours"][2] %></td>
+				<td><%= data["hours"][3] %></td>
+				<td><%= data["hours"][4] %></td>
+				<td><%= data["hours"][5] %></td>
+				<td><%= data["hours"][6] %></td>
+			</tr>
+			<% end %>
+		</table>
+		<p><%= link_to "Return to Home", root_path %></p>
+	</div>
+
+</div>
+
+

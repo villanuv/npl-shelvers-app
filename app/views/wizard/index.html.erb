@@ -1,50 +1,15 @@
 <%= render 'menu' %>
 
-<div class="container py-3">
+<div class="container py-4">
 	<div class="row">
-		<h2>Setup Wizard</h2>
+		<div class="float-left">
+			<h1>Spreadsheet Import</h1>
+		</div>
 	</div>
 	<div class="row">
-		<p>
-			Year: <%= @year %>, Week: <%= @week %><br>
-			For the week: <%= @start_of_week %> - <%= @end_of_week %>
-		</p>
-	</div>
-	<div class="row">
-		<% @shelvers.each do |shelver| %>
-		<table border="1" class="my-3" style="width: 100% !important;">
-			<tr>
-				<th width="30%"></th>
-				<th width="7%">Sun</th>
-				<th width="7%">Mon</th>
-				<th width="7%">Tue</th>
-				<th width="7%">Wed</th>
-				<th width="7%">Thu</th>
-				<th width="7%">Fri</th>
-				<th width="7%">Sat</th>
-				<th></th>
-			</tr>
-			<tr>
-				<td><%= shelver.last_name %>, <%= shelver.first_name %></td>
-				<td><%= shelver.schedules.last.sun %></td>
-				<td><%= shelver.schedules.last.mon %></td>
-				<td><%= shelver.schedules.last.tue %></td>
-				<td><%= shelver.schedules.last.wed %></td>
-				<td><%= shelver.schedules.last.thu %></td>
-				<td><%= shelver.schedules.last.fri %></td>
-				<td><%= shelver.schedules.last.sat %></td>
-				<td><button>Add/Edit</button></td>
-			</tr>
-		</table>
+		<%= form_tag({:action => :import}, multipart: true) do %>
+			<%= file_field_tag :file %>
+			<%= submit_tag( "Import" ) %>
 		<% end %>
 	</div>
 </div>
-
-<script>
-	$(document).ready(function(){
-		$('.row').slick({
-			accessibility: true,
-			dots: true
-		});
-	});
-</script>
