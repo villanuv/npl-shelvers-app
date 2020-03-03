@@ -32,6 +32,13 @@ class ShelversController < ApplicationController
 		end
 	end
 
+	def shelvers_open_modal
+		@shelver = Shelver.find(params[:shelver_id])
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	private
 
 	def shelver_params

@@ -15,7 +15,6 @@ class WeekController < ApplicationController
 		end
 	end
 
-
 	def show
 		if params[(:week_number)].to_i > 53 || params[(:week_number)].to_i < 1 || params[(:day_number)].to_i > 7 || params[(:day_number)].to_i < 1
 			redirect_to root_path
@@ -33,7 +32,6 @@ class WeekController < ApplicationController
 
 		@shelvers = Schedule.select{|x| x.send(@day_symbol) != nil && x.week_number == @week}.map{|sched| sched.shelver}.sort_by{|s| s.last_name}
 	end
-
 
 	private
 

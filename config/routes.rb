@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   resources :shelvers
 
-  resources :daily_logs, only: [:create]
+  resources :daily_logs, controller: 'daily_log'
+
 
   get '/:year/week/:week_number/day/:day_number' => 'week#show'
 

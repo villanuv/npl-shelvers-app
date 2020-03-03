@@ -1,12 +1,24 @@
 class DailyLogController < ApplicationController
+	respond_to :html, :json
 
-	# def create
-	#     @daily_log = DailyLog.new(dl_params)
-	#     if @daily_log.save
-	#       redirect_to @daily_log
-	#     end
-	# end
+	def create
+	    @daily_log = DailyLog.new(dl_params)
+	    if @daily_log.save
+	      redirect_to @daily_log
+	    end
+	end
 
+	def new
+		@shelver = Shelver.find(params[:shelver_id])
+		respond_to do |format|
+			format.html
+			format.js
+		end
+  	end
+
+	def create
+		@shelver = Shelver.find(params[:shelver_id])
+	end
 
 	# private
 
