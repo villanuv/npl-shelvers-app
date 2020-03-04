@@ -1,1 +1,2 @@
-$("#shelverModal").html("<%= escape_javascript(render 'daily_log/new') %>");
+$("#shelverModal").find(".modal-content").html("<%= j (render 'new') %>");
+$("#shelverModal").modal();

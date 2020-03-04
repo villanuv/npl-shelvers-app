@@ -225,6 +225,7 @@ DEPENDENCIES
   jquery-rails
   jquery-slick-rails
   pg (~> 0.15)
+  popper_js
   rails (= 4.2.5)
   rqrcode
   rspec-rails (~> 3.0)
