@@ -45,21 +45,27 @@
 		<% @shelvers.each do |shelver| %>
 			<tr>
 				<% day_object = DateTime.now.strftime("%a").downcase %>
+				<% daily_log = shelver.get_daily_log(shelver.id, @year, @week, @day) %>
 				<td><%= link_to "#{shelver.last_name}, #{shelver.first_name}", shelver %></td>
 				<td><%= shelver.schedules.last.send(day_object) %></td>
-				<% if shelver.daily_logs.map{|dl| dl.week_number}.include?(@week) && shelver.daily_logs.map{|dl| dl.day_number}.include?(@day) %>
+				<% if shelver.daily_logs.map{|dl| dl.year}.include?(@year) && shelver.daily_logs.map{|dl| dl.week_number}.include?(@week) && shelver.daily_logs.map{|dl| dl.day_number}.include?(@day) %>
 				<td><i class="fas fa-exclamation-triangle"></i></td>
 				<td></td>
-				<td></td>
-				<td></td>
-				<td>(x-x)</td>
+				<td><%= daily_log.department %></td>
+				<td><%= daily_log.daily_tasks %></td>
+				<td><%= daily_log.cleanup %> (x-x)</td>
 				<% else %>
 				<td colspan="5"><i class="fas fa-exclamation-triangle"></i> No Daily Log found</td>
 				<% end %>
 				<td>{{ generated }}</td>
 				<td>{{ generated }}</td>
 				<td class="edit-icon">
-					<%= link_to 'Add Daily Tasks', new_daily_log_path(shelver_id: shelver.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#shelverModal'}  %>
+					<% if shelver.daily_logs.map{|dl| dl.week_number}.include?(@week) && shelver.daily_logs.map{|dl| dl.day_number}.include?(@day) %>
+					<%#= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_daily_log_path(shelver_id: shelver.id, day: @day),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#shelverModal'} %>
+					<i class="fas fa-edit"></i>
+					<% else %>
+					<%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_daily_log_path(shelver_id: shelver.id, day: @day),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#shelverModal'}  %>
+					<% end %>
 				</td>
 			</tr>
 		<% end %>

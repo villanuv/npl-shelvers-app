@@ -12,4 +12,12 @@ class Shelver < ActiveRecord::Base
 		schedules.find_by(year: year, week_number: week).send(day)
 	end
 
+	def get_daily_log(shelver_id, year, week, day)
+		DailyLog.where(
+			shelver_id: shelver_id,
+			year: year,
+			week_number: week,
+			day_number: day
+		)[0]
+	end
 end

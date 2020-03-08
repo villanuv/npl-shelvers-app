@@ -13,6 +13,7 @@ class WeekController < ApplicationController
 		if @schedules_this_week.count > 0
 			@shelvers = Schedule.select{|x| x.send(@day_symbol) != nil && x.week_number == @week}.map{|sched| sched.shelver}.sort_by{|s| s.last_name}
 		end
+
 	end
 
 	def show
