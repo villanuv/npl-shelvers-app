@@ -15,13 +15,13 @@
 		<th>Sat</th>
 	</tr>
 	<tr>
-		<td><%= sched.sun if sched.sun != nil %></td>
-		<td><%= sched.mon if sched.mon != nil %></td>
-		<td><%= sched.tue if sched.tue != nil %></td>
-		<td><%= sched.wed if sched.wed != nil %></td>
-		<td><%= sched.thu if sched.thu != nil %></td>
-		<td><%= sched.fri if sched.fri != nil %></td>
-		<td><%= sched.sat if sched.sat != nil %></td>
+		<td><%= sched.sun if sched != nil %></td>
+		<td><%= sched.mon if sched != nil %></td>
+		<td><%= sched.tue if sched != nil %></td>
+		<td><%= sched.wed if sched != nil %></td>
+		<td><%= sched.thu if sched != nil %></td>
+		<td><%= sched.fri if sched != nil %></td>
+		<td><%= sched.sat if sched != nil %></td>
 	</tr>			
 </table>
 
