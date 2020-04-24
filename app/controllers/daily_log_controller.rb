@@ -1,6 +1,10 @@
 class DailyLogController < ApplicationController
 	respond_to :html, :json
 
+	def index
+		@daily_logs = DailyLog.alle
+	end
+
 	def create
 	    @daily_log = DailyLog.new(dl_params)
 	    if @daily_log.save
@@ -20,13 +24,17 @@ class DailyLogController < ApplicationController
 
   	def edit
   		@shelver = Shelver.find(params[:shelver].id)
-  		@daily_log = DailyLog.where(
-  			shelver_id: @shelver.id, 
-  			year: @year, 
-  			week_number: @week,
-  			day_number: @day
-  		)
+  		@daily_log = DailyLog.find(params[:id])
   	end
+
+	def update
+  		@daily_log = DailyLog.find(params[:id])
+		if @daily_log.update_attributes(dl_params)
+			redirect_to root_path
+		else
+			redirect_to root_path
+		end
+	end
 
 
 	private
